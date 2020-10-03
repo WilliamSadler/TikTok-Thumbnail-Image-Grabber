@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import filedialog
 import json
 import os
+import glob
 
 def grabFrame(video_path, frame):
     """Function that grabs an image of a video at a specific frame and returns the path of the generated image.
@@ -26,10 +27,16 @@ def generateFolders(path):
 
     #Temporary file folders
     if (os.path.exists("./temp") == False):
-            os.mkdir("/temp")
+        os.mkdir("./temp")
+
     
     if (os.path.exists("./temp/images") == False):
-            os.mkdir("/temp/images")
+        os.mkdir("./temp/images")
+    else:
+        files = glob.glob("./temp/images")
+        for f in files:
+            os.remove(f)
+
 
 
 if __name__ == "__main__":
