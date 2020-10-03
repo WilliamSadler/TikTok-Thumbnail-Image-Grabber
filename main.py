@@ -19,10 +19,17 @@ def grabFrame(video_path, frame):
 def generateFolders(path):
     """Generates folders in the thumbnail source folder path if they don't exit"""
     folders = ["left", "center", "right"]
-
+    #Folders for thumbnails to be stored
     for folder in folders:
         if (os.path.exists(path + "/" + folder) == False):
             os.mkdir(path + "/" + folder)
+
+    #Temporary file folders
+    if (os.path.exists("./temp") == False):
+            os.mkdir("/temp")
+    
+    if (os.path.exists("./temp/images") == False):
+            os.mkdir("/temp/images")
 
 
 if __name__ == "__main__":
