@@ -4,6 +4,8 @@ import json
 import os
 import glob
 
+from gui import ThumbnailGeneratorGUI
+
 def grabFrame(video_path, frame):
     """Function that grabs an image of a video at a specific frame and returns the path of the generated image.
 
@@ -32,12 +34,10 @@ def generateFolders(path):
     
     if (os.path.exists("./temp/images") == False):
         os.mkdir("./temp/images")
-    else:
-        files = glob.glob("./temp/images")
-        for f in files:
-            os.remove(f)
-
-
+    #else:
+    #    files = glob.glob("./temp/images")
+    #    for f in files:
+    #        os.remove(f)
 
 if __name__ == "__main__":
     root = Tk()
@@ -51,3 +51,6 @@ if __name__ == "__main__":
     thumbnail_source_path = channel_config["thumbnails"]["source_folder"]
 
     generateFolders(thumbnail_source_path)
+
+    gui = ThumbnailGeneratorGUI()
+    gui.open_gui()
